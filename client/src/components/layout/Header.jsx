@@ -6,7 +6,7 @@ import {FaUser} from 'react-icons/fa'
 import '../../styles/header.scss'
 import {motion} from "framer-motion"
 
-const Header = ({isAuthenticated = false}) => {
+const Header = ({isAuthenticated = true}) => {
   return (
     <nav>
       <motion.div initial={{x:"-100%"}}  whileInView={{x:0}}>

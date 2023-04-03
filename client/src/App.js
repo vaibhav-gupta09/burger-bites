@@ -9,6 +9,9 @@ import ConfirmOrder from './components/cart/ConfirmOrder';
 import PaymentSuccess from './components/cart/PaymentSuccess';
 import Login from './components/login/Login';
 import Profile from './components/profile/Profile';
+import MyOrders from './components/MyOrders/MyOrders';
+import OrderDetails from './components/MyOrders/OrderDetails';
+import Dashboard from './components/admin/Dashboard';
 import "./styles/app.scss"
 
 function App() {
@@ -24,7 +27,9 @@ function App() {
         <Route path="/paymentsuccess" element={<PaymentSuccess/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/me" element={<Profile/>}/>
-        
+        <Route path="/myorders" element={<MyOrders/>}/>
+        <Route path="/order/:id" element={<OrderDetails/>}/>
+        <Route path="/admin/dashboard" element={<Dashboard/>}/>
       </Routes>
       <Footer/>
     </Router>
