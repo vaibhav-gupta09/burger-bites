@@ -12,6 +12,10 @@ import Profile from './components/profile/Profile';
 import MyOrders from './components/MyOrders/MyOrders';
 import OrderDetails from './components/MyOrders/OrderDetails';
 import Dashboard from './components/admin/Dashboard';
+import Users from './components/admin/Users';
+import Orders from './components/admin/Orders';
+import About from './components/about/About';
+import NotFound from './components/layout/NotFound';
 import "./styles/app.scss"
 
 function App() {
@@ -22,6 +26,7 @@ function App() {
         <Route path="/" element={<Home/>}/>
         <Route path="/contact" element={<Contact/>}/>
         <Route path="/cart" element={<Cart/>}/>
+        <Route path="/about" element={<About/>}/>
         <Route path="/shipping" element={<Shipping/>}/>
         <Route path="/confirmorder" element={<ConfirmOrder/>}/>
         <Route path="/paymentsuccess" element={<PaymentSuccess/>}/>
@@ -30,6 +35,9 @@ function App() {
         <Route path="/myorders" element={<MyOrders/>}/>
         <Route path="/order/:id" element={<OrderDetails/>}/>
         <Route path="/admin/dashboard" element={<Dashboard/>}/>
+        <Route path="/admin/users" element={<Users/>}/>
+        <Route path="/admin/orders" element={<Orders/>}/>
+        <Route path="*" element={<NotFound/>}/>
       </Routes>
       <Footer/>
     </Router>

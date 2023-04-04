@@ -26,7 +26,8 @@ nav{
       transition: color 0.3s;
 
       &:hover{
-        color: $lightdark
+        color: $lightdark;
+        transform: scale(1.1);
       }
 
       > svg{
@@ -35,7 +36,8 @@ nav{
       font-size: 1.5rem;
 
       &:hover {
-          color: $lightdark
+          color: $lightdark;
+          transform: scale(1.1);
         }
       }
     }

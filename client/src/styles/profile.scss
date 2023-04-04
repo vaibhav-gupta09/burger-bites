@@ -38,6 +38,7 @@
         border-radius: 5px;
         &:hover{
           background-color: $reddark;
+          transform: scale(1.1);
         }
       }
     }
@@ -53,6 +54,7 @@
       margin: 1rem;
       &:hover {
           background-color: rgba(245, 245, 245, 0.864);
+          transform: scale(1.1);
         }
     }
   }
