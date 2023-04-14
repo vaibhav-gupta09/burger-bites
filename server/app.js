@@ -5,7 +5,7 @@ import session from "express-session";
 import cookieParser from "cookie-parser";
 import { errorMiddleware } from "./middlewares/errorMiddleware.js";
 import userRoute from './routes/user.js'
-import orderRoute from './routes/Order.js'
+import orderRoute from './routes/order.js'
 import passport from "passport";
 import cors from 'cors';
 

@@ -1,6 +1,6 @@
 import { asyncError } from "../middlewares/errorMiddleware.js";
 import {User} from '../models/User.js'
-import { Order } from "../models/Order.js";
+import { Order } from "../models/order.js";
 
 export const myProfile = (req, res, next)=>{
   res.status(200).json({
