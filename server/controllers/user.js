@@ -16,7 +16,7 @@ export const logout = (req, res, next)=>{
     res.clearCookie("connect.sid",{
     secure: process.env.NODE_ENV==='development'?false:true,
     httponly: process.env.NODE_ENV==='development'?false:true,
-    samesite: process.env.NODE_ENV==='development'?false:"none"
+    sameSite: process.env.NODE_ENV==='development'?false:"none"
   });
 
 

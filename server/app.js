@@ -25,7 +25,7 @@ app.use(session({
   cookie:{
     secure: process.env.NODE_ENV==='development'?false:true,
     httponly: process.env.NODE_ENV==='development'?false:true,
-    samesite: process.env.NODE_ENV==='development'?false:"none"
+    sameSite: process.env.NODE_ENV==='development'?false:"none"
   }
 })
 );
@@ -40,7 +40,7 @@ app.use(cors({
   credentials: true,
   origin: process.env.FRONTEND_URL,
   methods: ["GET", "POST", "PUT", "DELETE"]
-}))
+}));
 
 app.use(passport.authenticate("session"));
 app.use(passport.initialize());
