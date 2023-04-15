@@ -14,9 +14,9 @@ export const logout = (req, res, next)=>{
     if(err) return next(err);
 
     res.clearCookie("connect.sid",{
-    secure: process.env.NODE_ENV==='development'?false:true,
-    httponly: process.env.NODE_ENV==='development'?false:true,
-    sameSite: process.env.NODE_ENV==='development'?false:"none"
+    secure: process.env.NODE_ENV === "development" ? false : true,
+    httpOnly: process.env.NODE_ENV === "development" ? false : true,
+    sameSite: process.env.NODE_ENV === "development" ? false : "none",
   });
 
 
