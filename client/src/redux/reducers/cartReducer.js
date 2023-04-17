@@ -100,34 +100,5 @@ export const cartReducer = createReducer(initialState, {
   },
 })
 
-export const orderReducer = createReducer({}, {
-  createOrderRequest: (state)=>{
-    state.loading = true;
-  },
-  createOrderSuccess: (state, action)=>{
-    state.loading = false;
-    state.message = action.payload;
-  },
-  createOrderFail: (state, action)=>{
-    state.loading = false;
-    state.error = action.payload;
-  },
-  paymentVarificationRequest: (state)=>{
-    state.loading = true;
-  },
-  paymentVarificationSuccess: (state, action)=>{
-    state.loading = false;
-    state.message = action.payload;
-  },
-  paymentVarificationFail: (state, action)=>{
-    state.loading = false;
-    state.error = action.payload;
-  },
-  clearMessage: (state)=>{
-    state.message = null;
-  },
-  clearError: (state)=>{
-    state.error = null;
-  }
-})
+
 

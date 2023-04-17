@@ -4,11 +4,34 @@ import MenuCard from './MenuCard'
 import burger1 from '../../assets/burger1.png'
 import burger2 from "../../assets/burger2.png";
 import burger3 from "../../assets/burger3.png";
+import { useDispatch, useSelector } from "react-redux";
+import toast, { Toaster } from "react-hot-toast";
+import { useNavigate } from 'react-router-dom';
 
 const Menu = () => {
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const addToCartHandler = (itemNum)=>{
-
+    switch(itemNum){
+      case 1:
+        dispatch({ type: "cheeseBurgerIncreament" });
+        toast.success("Added to cart");
+        break;
+      case 2:
+        dispatch({ type: "asianFusionBurgerIncreament" });
+        toast.success("Added to cart");
+        break;
+      case 3:
+        dispatch({ type: "greekVeggieBurgerIncreament" });
+        toast.success("Added to cart");
+        break;  
+      default:
+        dispatch({ type: "cheeseBurgerIncreament" });
+        toast.success("Added to cart");
+        break;    
+    }
+    dispatch({ type: "calculatePrice" });
+    navigate("/cart");
   }
   return (
     <section id="menu">
