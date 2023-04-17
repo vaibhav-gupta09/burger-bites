@@ -3,6 +3,7 @@ import { Order } from "../models/Order.js";
 import { instance } from "../server.js";
 import ErrorHandler from "../utils/ErrorHandler.js";
 import {Payment} from "../models/Payment.js"
+import crypto from "crypto";
 
 export const placeOrder = asyncError(
   async (req, res, next) =>{
@@ -77,7 +78,7 @@ export const placeOrderOnline = asyncError(
 
 export const paymentVerification = asyncError(async(req, res, next)=>{
   const {razorpay_payment_id, razorpay_order_id, razorpay_signature, orderOptions} = req.body;
-  // const body = razorpay_order_id + "|" + razorpay_payment_id;
+  
   const expectedSignature = crypto
   .createHmac("sha256", process.env.RAZORPAY_API_SECRET)
   .update(body)

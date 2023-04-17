@@ -2,16 +2,17 @@ import React, { useState } from 'react'
 import '../../styles/shipping.scss'
 import {Country, State} from 'country-state-city'
 import {Link} from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 const Shipping = () => {
-  const[hNo, setHNo] = useState("");
-  const[city, setCity] = useState("");
-  const[country, setCountry] = useState("");
-  const[state, setState] = useState("");
-  const[phoneNo, setPhoneNo] = useState("");
-  const[pincode, setPincode] = useState("");
+  const {shippingInfo} = useSelector((state) => state.cart)
+  const [hno, setHNo] = useState(shippingInfo.hno);
+  const [city, setCity] = useState(shippingInfo.city);
+  const [country, setCountry] = useState(shippingInfo.country);
+  const [state, setState] = useState(shippingInfo.state);
+  const [phoneNo, setPhoneNo] = useState(shippingInfo.phoneNo);
+  const [pinCode, setPincode] = useState(shippingInfo.pinCode);
   
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -20,24 +21,24 @@ const Shipping = () => {
     dispatch({
       type: "addShippingInfo",
       payload: {
-        hNo,
+        hno,
         city,
         country,
         state,
         phoneNo,
-        pincode,
+        pinCode,
       },
     });
     
     localStorage.setItem(
       "shippingInfo",
       JSON.stringify({
-        hNo,
+        hno,
         city,
         country,
         state,
         phoneNo,
-        pincode,
+        pinCode,
       })
     );
     navigate("/confirmorder");
@@ -54,7 +55,7 @@ const Shipping = () => {
               required
               type="text"
               placeholder="Enter your house no."
-              value={hNo}
+              value={hno}
               onChange={(e) => {
                 setHNo(e.target.value);
               }}
@@ -118,7 +119,7 @@ const Shipping = () => {
              required
               type="number"
               placeholder="Enter your pin code"
-              value={pincode}
+              value={pinCode}
               onChange={(e) => {
                 setPincode(e.target.value);
               }}

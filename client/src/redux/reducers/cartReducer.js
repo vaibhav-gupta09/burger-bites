@@ -2,7 +2,8 @@ import {createReducer} from "@reduxjs/toolkit";
 
 
 const initialState = {
-  cartItems:{
+ 
+  cartItems: localStorage.getItem("cartItems") ? JSON.parse(localStorage.getItem("cartItems")): {
     cheeseBurger:{
       quantity: 0,
       price: 120
@@ -15,12 +16,22 @@ const initialState = {
       quantity: 0,
       price: 250
     },
-  },
-  subTotal:0,
-  tax: 0,
-  shippingCharges: 0,
-  total: 0,
-  shippingInfo: {}
+  } ,
+  subTotal: localStorage.getItem("cartPrices")
+    ? JSON.parse(localStorage.getItem("cartPrices")).subTotal
+    : 0,
+  tax: localStorage.getItem("cartPrices")
+    ? JSON.parse(localStorage.getItem("cartPrices")).tax
+    : 0,
+  shippingCharges: localStorage.getItem("cartPrices")
+    ? JSON.parse(localStorage.getItem("cartPrices")).shippingCharges
+    : 0,
+  total: localStorage.getItem("cartPrices")
+    ? JSON.parse(localStorage.getItem("cartPrices")).total
+    : 0,
+  shippingInfo: localStorage.getItem("shippingInfo")
+    ? JSON.parse(localStorage.getItem("shippingInfo"))
+    : {},
 };
 
 export const cartReducer = createReducer(initialState, {
@@ -78,13 +89,13 @@ export const cartReducer = createReducer(initialState, {
   state.total= 0;
   },
   addShippingInfo:(state, action)=>{
-     state.shippingInfo = {
-       hNo: action.payload.hNo, 
+       state.shippingInfo = {
+       hno: action.payload.hno, 
        city: action.payload.city, 
        country: action.payload.country, 
        state: action.payload.state, 
        phoneNo: action.payload.phoneNo, 
-       pincode: action.payload.pincode
+       pinCode: action.payload.pinCode
      };
   },
 })
@@ -98,6 +109,17 @@ export const orderReducer = createReducer({}, {
     state.message = action.payload;
   },
   createOrderFail: (state, action)=>{
+    state.loading = false;
+    state.error = action.payload;
+  },
+  paymentVarificationRequest: (state)=>{
+    state.loading = true;
+  },
+  paymentVarificationSuccess: (state, action)=>{
+    state.loading = false;
+    state.message = action.payload;
+  },
+  paymentVarificationFail: (state, action)=>{
     state.loading = false;
     state.error = action.payload;
   },
