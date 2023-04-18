@@ -15,7 +15,7 @@ const Header = ({isAuthenticated}) => {
 
       <div>
         <Link to="/">Home</Link>
-        <Link to="/contact">Contact</Link>
+        {/* <Link to="/contact">Contact</Link> */}
         <Link to="/about">about</Link>
         <Link to="/cart"><FiShoppingCart/></Link>
 

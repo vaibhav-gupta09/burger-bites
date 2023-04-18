@@ -55,7 +55,7 @@ function App() {
       <Header isAuthenticated={isAuthenticated}/>
       <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path="/contact" element={<Contact/>}/>
+        {/* <Route path="/contact" element={<Contact/>}/> */}
         <Route path="/cart" element={<Cart/>}/>
         <Route path="/about" element={<About/>}/>
         <Route path="/paymentsuccess" element={<PaymentSuccess/>}/>
