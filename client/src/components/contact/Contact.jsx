@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { motion } from "framer-motion";
 import '../../styles/contact.scss';
 import burger from '../../assets/smile-burger1.png';
-import { useDispatch } from 'react-redux';
-import { createMessage } from '../../redux/actions/message';
+
 const Contact = () => {
   const option1 = {
     initial: { x: "-100%", opacity: 0 },
@@ -14,17 +13,10 @@ const Contact = () => {
     initial: { x: "100%", opacity: 0 },
     whileInView: { x: 0, opacity: 1 },
   };
-  
-  const dispatch = useDispatch();
+
   const  [name, setName] = useState("");
   const  [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
-
-  const submitHandler = (e)=>{
-    e.preventDefault();
-    console.log(name, email, message);
-    dispatch(createMessage(name, email, message));
-  }
 
   return (
     <section className="contact">
@@ -55,7 +47,9 @@ const Contact = () => {
             setMessage(e.target.value);
           }}
         ></textarea>
-        <button type="submit" onSubmit={submitHandler}>Send</button>
+        <button type="submit" >
+          Send
+        </button>
       </motion.form>
 
       <motion.div

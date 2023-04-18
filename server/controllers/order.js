@@ -68,7 +68,6 @@ export const placeOrderOnline = asyncError(
 
   const order = await instance.orders.create(options)
 
-  await Order.create(orderOptions);
   res.status(201).json({
     success: true,
     order, orderOptions

@@ -39,17 +39,6 @@ const Profile = () => {
                   DashBoard
                 </Link>
               </motion.div>
-              <motion.div {...options} transition={{ delay: 0.5 }}>
-                <Link
-                  to="/messages"
-                  style={{
-                    borderRadius: 0,
-                    backgroundColor: "rgb(40, 40, 40)",
-                  }}
-                >
-                  User Messages
-                </Link>
-              </motion.div>
             </>
           )}
 
