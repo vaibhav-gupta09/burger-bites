@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";
 import { errorMiddleware } from "./middlewares/errorMiddleware.js";
 import userRoute from './routes/user.js'
 import orderRoute from './routes/order.js'
+import messageRoute from './routes/message.js'
 import passport from "passport";
 import cors from 'cors';
 
@@ -52,6 +53,7 @@ connectPassport();
 
 app.use("/api/v1", userRoute);
 app.use("/api/v1", orderRoute);
+app.use("/api/v1", messageRoute);
 
 //Error Middleware 
 app.use(errorMiddleware)

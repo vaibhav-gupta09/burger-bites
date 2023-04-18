@@ -16,6 +16,7 @@ import Users from './components/admin/Users';
 import Orders from './components/admin/Orders';
 import About from './components/about/About';
 import NotFound from './components/layout/NotFound';
+import Messages from './components/admin/Messages';
 import "./styles/app.scss"
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
@@ -81,6 +82,7 @@ function App() {
         <Route path="/admin/dashboard" element={<Dashboard/>}/>
         <Route path="/admin/users" element={<Users/>}/>
         <Route path="/admin/orders" element={<Orders/>}/>
+        <Route path="/messages" element={<Messages/>}/>
         </Route>
 
         <Route path="*" element={<NotFound/>}/>
