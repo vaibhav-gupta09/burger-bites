@@ -2,17 +2,32 @@ import React, { useEffect } from 'react'
 import { Link } from "react-router-dom";
 import { AiOutlineEye } from "react-icons/ai";
 import {GiArmoredBoomerang} from 'react-icons/gi'
-import { getAdminOrders } from '../../redux/actions/admin';
+import { getAdminOrders, processOrder } from '../../redux/actions/admin';
 import { useDispatch, useSelector } from "react-redux";
 import Loader from '../layout/Loader';
+import toast, { Toaster } from "react-hot-toast";
 
 const Orders = () => {
   const dispatch = useDispatch();
-  const { loading, orders } = useSelector((state) => state.admin);
+  const { loading, orders, message, error } = useSelector((state) => state.admin);
 
   useEffect(() => {
+   if(message){
+    toast.success(message);
+    dispatch({type:"clearMessage"});
+   }
+   if(error){
+    toast.error(error);
+    dispatch({type:"clearError"});
+   }
+
     dispatch(getAdminOrders());
-  }, [dispatch]);
+
+  }, [dispatch, error, message]);
+
+  const processOrderHandler = (id)=>{
+    dispatch(processOrder(id));
+  }
   return (
     <section className="tableClass">
       {loading === false ? (
@@ -49,7 +64,7 @@ const Orders = () => {
                         <AiOutlineEye />
                       </Link>
 
-                      <button>
+                      <button onClick={()=>processOrderHandler(i._id)}>
                         <GiArmoredBoomerang />
                       </button>
                     </td>

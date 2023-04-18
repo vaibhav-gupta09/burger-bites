@@ -44,3 +44,17 @@ export const getAdminOrders = () => async(dispatch)=>{
       dispatch({type: "getAdminOrdersFail", payload: error.response.data.message});
     }
 }
+
+export const processOrder = (id) => async(dispatch)=>{
+    try{
+      dispatch({type: "processOrderRequest"});
+
+      const {data}  = await axios.get(`${server}/admin/orders/${id}`, {
+        withCredentials: true,
+      });
+
+      dispatch({type: "processOrderSuccess", payload: data.message});
+    }catch(error){
+      dispatch({type: "processOrderFail", payload: error.response.data.message});
+    }
+}

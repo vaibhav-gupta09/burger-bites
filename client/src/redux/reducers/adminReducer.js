@@ -40,5 +40,22 @@ export const adminReducer = createReducer({orders:[], users:[]}, {
     state.loading = false;
     state.error = action.payload;
   },
-
+  processOrderRequest: (state)=>{
+    state.loading = true;
+  },
+  processOrderSuccess: (state, action)=>{
+    state.loading = false;
+    state.message = action.payload;
+    
+  },
+  processOrderFail: (state, action)=>{
+    state.loading = false;
+    state.error = action.payload;
+  },
+    clearError: (state)=>{
+      state.error = null;
+    },
+  clearMessage: (state)=>{
+      state.message = null;
+    },
 })
